@@ -1,0 +1,36 @@
+{
+  "name": "repopo-reviewer-hooks",
+  "version": "0.1.0",
+  "description": "GitLab webhook integration for code review with embeddings",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "start:webhook": "node dist/webhook-server.js",
+    "dev": "bun --watch src/index.ts",
+    "dev:webhook": "bun --watch src/webhook-server.ts"
+  },
+  "dependencies": {
+    "axios": "^1.9.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "pg": "^8.11.3",
+    "pg-format": "^1.0.4",
+    "morgan": "^1.10.0",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.18",
+    "@types/express": "^5.0.1",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^22.15.17",
+    "@types/pg": "^8.10.9",
+    "@types/pg-format": "^1.0.5",
+    "@types/uuid": "^9.0.8",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}

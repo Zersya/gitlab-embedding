@@ -1,0 +1,15 @@
+[install]
+# Use exact versions for dependencies
+exact = true
+
+[debug]
+# Enable source maps
+sourcemap = true
+
+[build]
+# Automatically generate .d.ts files
+declaration = true
+
+[test]
+# Enable test coverage
+coverage = true
