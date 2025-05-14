@@ -100,6 +100,7 @@ export interface GitLabMergeRequestAttributes {
   author: GitLabUser;
   created_at: string;
   updated_at: string;
+  action?: string;
 }
 
 export interface GitLabMergeRequestEvent {

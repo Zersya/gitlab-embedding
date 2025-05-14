@@ -23,7 +23,7 @@ export const processWebhook = async (req: Request, res: Response, next: Function
     } else if (event.object_kind === 'merge_request') {
       await processMergeRequestEvent(event);
     } else {
-      console.log(`Ignoring unsupported event type: ${event.object_kind}`);
+      console.log(`Ignoring unsupported event type`);
     }
   } catch (error) {
     console.error('Error processing webhook:', error);
