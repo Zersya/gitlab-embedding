@@ -9,7 +9,7 @@ services:
       - "3000:3000"
     environment:
       - PORT=3000
-      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/repopo_reviewer
+      - DATABASE_URL=${DATABASE_URL}
       - GITLAB_API_TOKEN=${GITLAB_API_TOKEN}
       - GITLAB_API_URL=${GITLAB_API_URL}
       - GITLAB_USERNAME=${GITLAB_USERNAME}
