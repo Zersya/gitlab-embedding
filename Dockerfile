@@ -3,6 +3,9 @@ FROM node:20-alpine AS build
 
 WORKDIR /app
 
+# Install git
+RUN apk add --no-cache git
+
 # Copy package files and install dependencies
 COPY package*.json ./
 RUN npm install
@@ -18,6 +21,9 @@ RUN npm run build
 FROM node:20-alpine
 
 WORKDIR /app
+
+# Install git
+RUN apk add --no-cache git
 
 # Copy package files and install production dependencies only
 COPY package*.json ./
