@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  webhook-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    environment:
+      - PORT=3000
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/repopo_reviewer
+      - GITLAB_API_TOKEN=${GITLAB_API_TOKEN}
+      - GITLAB_API_URL=${GITLAB_API_URL}
+      - GITLAB_USERNAME=${GITLAB_USERNAME}
+      - WEBHOOK_SECRET=${WEBHOOK_SECRET}
+      - API_KEY=${API_KEY}
+      - APP_URL=${APP_URL}
+      - QODO_EMBED_API_KEY=${QODO_EMBED_API_KEY}
+      - QODO_EMBED_API_URL=${QODO_EMBED_API_URL}
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+      - OPENROUTER_API_URL=${OPENROUTER_API_URL}
+      - TEMP_DIR=/app/temp
+    volumes:
+      - ./temp:/app/temp
+    restart: unless-stopped
+
+  postgres:
+    image: ankane/pgvector:latest
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=repopo_reviewer
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+networks: 
+  default:
+    name: qodo_network
+volumes:
+  postgres-data:
